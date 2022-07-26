@@ -1,0 +1,47 @@
+cabal-version:      3.0
+name:               plutus-secp256k1-interop
+version:            1.0.0
+synopsis:           Interoperation for SECP curve verification in Plutus
+description:
+  Wraps various serialization formats for SECP256k1 curve signature
+  verification for simpler use with Plutus' on-chain primitives for
+  verifying signatures over the ECDSA and Schnorr schemes over that
+  curve.
+
+homepage:           https://github.com/mlabs-haskell/plutus-secp256k1-interop
+bug-reports:
+  https://github.com/mlabs-haskell/plutus-secp256k1-interop/issues
+
+license:            Apache-2.0
+license-file:       LICENSE
+author:             Koz Ross
+maintainer:         Koz Ross <koz@mlabs.city>
+copyright:          (C) 2022 MLabs
+category:           Plutus
+build-type:         Simple
+tested-with:        GHC ==8.10.7
+extra-source-files:
+  CHANGELOG.md
+  LICENSE
+  README.md
+
+source-repository head
+  type:     git
+  location: https://github.com/mlabs-haskell/plutus-secp256k1-interop
+
+common lang
+  default-language: Haskell2010
+  ghc-options:
+    -Wall -Wcompat -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Wredundant-constraints
+    -Wmissing-export-lists -Wmissing-deriving-strategies -Werror
+    -Wno-partial-type-signatures
+
+  build-depends:    base ^>=4.14
+
+library
+  import:          lang
+  exposed-modules: Plutus.SECP256K1.Interop
+  other-modules:   Plutus.SECP256K1.FFI
+  build-depends:   bytestring
+  hs-source-dirs:  src

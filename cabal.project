@@ -1,0 +1,6 @@
+packages: ./plutus-secp256k1-interop.cabal
+
+test-show-details: direct
+
+package plutus-secp256k1-interop
+  ghc-options: -Werror
