@@ -42,6 +42,33 @@ common lang
 library
   import:          lang
   exposed-modules: Plutus.SECP256K1.Interop
-  other-modules:   Plutus.SECP256K1.FFI
-  build-depends:   bytestring
+  build-depends:
+    , bytestring
+    , ffi
+
   hs-source-dirs:  src
+
+library ffi
+  import:            lang
+  visibility:        private
+  exposed-modules:   FFI
+  pkgconfig-depends: libsecp256k1 -any
+  c-sources:
+    ffi/ffi.c
+    ffi/ffi.h
+
+  hs-source-dirs:    ffi
+
+test-suite properties
+  import:         lang
+  type:           exitcode-stdio-1.0
+  main-is:        Main.hs
+  build-depends:
+    , bytestring
+    , ffi
+    , plutus-secp256k1-interop
+    , QuickCheck
+    , tasty
+    , tasty-quickcheck
+
+  hs-source-dirs: test/properties

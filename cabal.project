@@ -1,5 +1,7 @@
 packages: ./plutus-secp256k1-interop.cabal
 
+tests: true
+
 test-show-details: direct
 
 package plutus-secp256k1-interop

@@ -6,5 +6,6 @@ mkShell {
     cabal-install 
     ormolu
     hlint
+    pkg-config
   ];
 }
